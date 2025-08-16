@@ -6,17 +6,14 @@ import requests
 from fastapi import FastAPI
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-uri = "mongodb+srv://gamertimka9:iIQvCJtNpR6ZgZAz@weatherapp.qbk28pl.mongodb.net/?retryWrites=true&w=majority&appName=WeatherApp"
+
+from keys.gitignorfile import uri, api_key, host, port
 
 client = MongoClient(uri, server_api=ServerApi('1'))
 db = client.weatherapp
 
 weather_collection = db["forecasts"]
 users_collection = db["users"]
-
-# weather_collection.insert_one
-
-api_key = "9412019bd8271cee3f3d2c0c5ace2248"
 
 app = FastAPI()
 
@@ -45,4 +42,4 @@ async def get_dbstatus():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host=host, port=port)
