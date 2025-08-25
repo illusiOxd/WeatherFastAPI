@@ -3,3 +3,7 @@ uvicorn[standard]
 pymongo
 python-dotenv
 requests
+PyJWT
+bcrypt
+pydantic
+pydantic[email]
